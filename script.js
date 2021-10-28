@@ -12,11 +12,13 @@ function Book(title,author,pages,read) {
 
 function addBookToLibrary(title,author,pages,read) {
     myLibrary.push(new Book(title,author,pages,read));
-    setData();
+    display();
 }
 
 function display(){
     for(let i=0;i<myLibrary.length;i++){
+        setData();
+
         const div=document.createElement("div");
         div.classList.add("book");
         div.id=i;
@@ -47,7 +49,6 @@ function display(){
             
             container.innerHTML="";
             myLibrary.splice(bookId,1,new Book(title,author,pages,read));
-            setData();
             display();
         });
         
@@ -58,9 +59,9 @@ function display(){
         
         removeBook.addEventListener("click",function(e){
             const bookId=e.target.parentNode.parentNode.id;
+
             container.innerHTML="";
             myLibrary.splice(bookId,1);
-            setData();
             display();
         });
     }
