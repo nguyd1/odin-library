@@ -8,11 +8,11 @@ function Book(title,author,pages,read) {
     this.author=author;
     this.pages=pages;
     this.read=read;
-    this.info=()=>title+" by "+author+", "+pages+" pages, "+read;
 }
 
 function addBookToLibrary(title,author,pages,read) {
     myLibrary.push(new Book(title,author,pages,read));
+    setData();
 }
 
 function display(){
@@ -20,7 +20,13 @@ function display(){
         const div=document.createElement("div");
         div.classList.add("book");
         div.id=i;
-        div.textContent=myLibrary[i].info();
+
+        let author=myLibrary[i].author;
+        let pages=myLibrary[i].pages;
+        let title=myLibrary[i].title;
+        let read=myLibrary[i].read;
+
+        div.textContent=title+" by "+author+", "+pages+" pages, "+read;
         container.appendChild(div);
 
         const buttons=document.createElement("div");
@@ -41,6 +47,7 @@ function display(){
             
             container.innerHTML="";
             myLibrary.splice(bookId,1,new Book(title,author,pages,read));
+            setData();
             display();
         });
         
@@ -53,10 +60,26 @@ function display(){
             const bookId=e.target.parentNode.parentNode.id;
             container.innerHTML="";
             myLibrary.splice(bookId,1);
+            setData();
             display();
         });
     }
 }
+
+// store
+const setData=()=>localStorage.setItem("library",JSON.stringify(myLibrary));
+
+// load (runs only one time at the beginning)
+myLibrary=JSON.parse(localStorage.getItem("library"));
+display();
+
+/*
+if(localStorage.library){
+    myLibrary=JSON.parse(localStorage.getItem("library"));
+    console.table(myLibrary);
+    display();
+}
+*/
 
 newbook.addEventListener("click",()=>{
     const title=window.prompt("Enter title: ");
