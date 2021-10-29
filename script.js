@@ -72,7 +72,7 @@ const setData=()=>localStorage.setItem("library",JSON.stringify(myLibrary));
 
 // load (runs only one time at the beginning)
 myLibrary=JSON.parse(localStorage.getItem("library"));
-display();
+if(myLibrary) display();
 
 /*
 if(localStorage.library){
