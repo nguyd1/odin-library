@@ -28,19 +28,20 @@ function display(){
         let title=myLibrary[i].title;
         let read=myLibrary[i].read;
 
-        const titleHeader=document.createElement("h1");
+        const titleHeader=document.createElement("h2");
         titleHeader.textContent=title;
         div.appendChild(titleHeader);
 
-        const authorHeader=document.createElement("h2");
+        const authorHeader=document.createElement("h3");
         authorHeader.textContent=author;
+        authorHeader.style.fontStyle="italic";
         div.appendChild(authorHeader);
 
-        const pagesHeader=document.createElement("h3");
+        const pagesHeader=document.createElement("h4");
         pagesHeader.textContent="Pages: "+pages;
         div.appendChild(pagesHeader);
 
-        const readHeader=document.createElement("h3");
+        const readHeader=document.createElement("h4");
         readHeader.textContent="Read: "+read;
         div.appendChild(readHeader);
 
