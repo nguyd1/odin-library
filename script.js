@@ -28,7 +28,22 @@ function display(){
         let title=myLibrary[i].title;
         let read=myLibrary[i].read;
 
-        div.textContent=title+" by "+author+", "+pages+" pages, "+read;
+        const titleHeader=document.createElement("h1");
+        titleHeader.textContent=title;
+        div.appendChild(titleHeader);
+
+        const authorHeader=document.createElement("h2");
+        authorHeader.textContent=author;
+        div.appendChild(authorHeader);
+
+        const pagesHeader=document.createElement("h3");
+        pagesHeader.textContent="Pages: "+pages;
+        div.appendChild(pagesHeader);
+
+        const readHeader=document.createElement("h3");
+        readHeader.textContent="Read: "+read;
+        div.appendChild(readHeader);
+
         container.appendChild(div);
 
         const buttons=document.createElement("div");
